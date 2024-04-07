@@ -1,0 +1,90 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+const navLinks = [
+  {
+    name: 'home',
+    url: '/'
+  },
+  {
+    name: 'members',
+    url: '/members'
+  },
+  {
+    name: 'projects',
+    url: '/projects'
+  }
+]
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+    <h1>
+      <a href="/">freesoftware.club</a>
+    </h1>
+    <nav>
+      {navLinks.map((link) => (
+        <a href={link.url} class="navlink">{link.name}</a>
+        <br>
+        <br>
+      ))}
+    </nav>
+    <br>
+    <i>"we the ones that live in your basement"</i>
+    <hr>
+		<slot />
+	</body>
+</html>
+<style is:global>
+  @import url(https://fonts.bunny.net/css?family=fira-code:300,400,500,600,700);
+
+  * {
+    padding: 0;
+  }
+
+  :root {
+    --bg: #150320;
+    --accent: #fc2b50;
+  }
+
+	body {
+    background-color: var(--bg);
+    color: var(--accent);
+    font-family: 'Fira Code', monospace;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 50px;
+    border: 2px solid var(--accent);
+  }
+
+  hr {
+    border-color: var(--accent);
+  }
+
+  a {
+    color: var(--accent);
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .navlink {
+    background-color: var(--accent);
+    color: var(--bg);
+  }
+</style>

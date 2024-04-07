@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+type Link = {
+  name: string,
+  url: string
+}
+
+type Person = {
+  name: string,
+  pronouns: string,
+  about: string,
+  links: Link[]
+}
+
+const people: Person[] = [
+  {
+    name: 'errplane',
+    pronouns: 'he/him',
+    about: "i do stuff on the 'puter",
+    links: [
+      {
+        name: 'my website',
+        url: 'https://dour.com'
+      },
+      {
+        name: 'github',
+        url: 'https://github.com/errplanedev'
+      },
+      {
+        name: 'wasteof',
+        url: 'https://wasteof.money/@errplane'
+      },
+      {
+        name: 'fedded verse',
+        url: 'https://possum.city/@plane'
+      }
+    ]
+  },
+  {
+    name: 'zirconium',
+    pronouns: 'he/him',
+    about: 'idiot, web dev, and little blob guy',
+    links: [
+      {
+        name: 'youtube',
+        url: 'https://youtube.com/@lolzthegreat'
+      },
+      {
+        name: 'wasteof dot money',
+        url: 'https://wasteof.money/users/zr'
+      },
+      {
+        name: 'website',
+        url: 'https://zirc.lol/'
+      }
+    ]
+  }
+];
+---
+
+<Layout title="members of freesoftware.club">
+  <main>
+    <h2 style="background-color: var(--accent); padding: 20px; color: var(--bg);">meet the members</h2>
+    {people.map((person) => (
+      <div style="text-align: center; border: 2px solid var(--accent); padding: 30px;">
+        <h2>{person.name}</h2>
+        <i style="color: #a61a34;">{person.pronouns}</i>
+        <p>{person.about}</p>
+        <p style="font-weight: 800;">LINKS</p>
+        {person.links.map((link) => (
+          <a href={link.url}>{link.name}</a>
+          <br>
+        ))}
+        <p>...and probably more (not listed L)</p>
+      </div>
+      <br>
+    ))}
+  </main>
+</Layout>
