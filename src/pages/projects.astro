@@ -8,7 +8,7 @@ const { data: repos }: any = await axios.get('https://api.github.com/orgs/freeso
 <Layout title="projects that the freesoftware.club has made">
   <br>
   <h1>freesoftware.club projects</h1>
-  {repos.map((repo) => (
+  {repos.map((repo: any) => (
     <div style="border: 2px solid var(--accent); padding-left: 20px;">
       <a href={repo.html_url} target="_blank"><h2>{repo.name}</h2></a>
       <i>{repo.description}</i>
