@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import axios from 'axios';
 
-const { data: repos } = await axios.get('https://api.github.com/orgs/freesoftwareclub/repos');
+const { data: repos }: any = await axios.get('https://api.github.com/orgs/freesoftwareclub/repos');
 ---
 
 <Layout title="projects that the freesoftware.club has made">
