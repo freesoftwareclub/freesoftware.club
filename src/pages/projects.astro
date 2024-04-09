@@ -1,7 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
+import axios from 'axios';
+
+const { data: repos } = await axios.get('https://api.github.com/orgs/freesoftwareclub/repos');
 ---
 
 <Layout title="projects that the freesoftware.club has made">
-  hmm.. i'm too lazy to fetch the github repos and map them, so uhh... i think you're looking for <a href="https://github.com/freesoftwareclub">our github</a>
+  <br>
+  <h1>freesoftware.club projects</h1>
+  {repos.map((repo) => (
+    <div style="border: 2px solid var(--accent); padding-left: 20px;">
+      <a href={repo.html_url} target="_blank"><h2>{repo.name}</h2></a>
+      <i>{repo.description}</i>
+      <br>
+      <br>
+    </div>
+  ))}
 </Layout>
